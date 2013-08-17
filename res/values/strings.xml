@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_id">537799596287860</string>
+    <string name="app_name">TrioTicTacToe</string>
+    <string name="action_settings">Settings</string>
+    <string name="just_a_second">Just a second..</string>
+
+</resources>

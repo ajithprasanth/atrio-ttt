@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="ttt_cell_width">30dp</dimen>
+    <dimen name="ttt_cell_height">30dp</dimen>
+    <dimen name="mega_ttt_cell_width">90dp</dimen>
+    <dimen name="mega_ttt_cell_height">90dp</dimen>
+    <dimen name="ttt_padding">5dp</dimen>
+    <dimen name="col_id">0dp</dimen>
+    <dimen name="row_id">0dp</dimen>
+    
+</resources>

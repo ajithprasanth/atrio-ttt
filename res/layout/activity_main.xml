@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <include
+            android:id="@+id/ttt_0_0"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_0_1"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_0_2"
+            layout="@layout/mini_ttt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <include
+            android:id="@+id/ttt_1_0"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_1_1"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_1_2"
+            layout="@layout/mini_ttt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <include
+            android:id="@+id/ttt_2_0"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_2_1"
+            layout="@layout/mini_ttt" />
+
+        <include
+            android:id="@+id/ttt_2_2"
+            layout="@layout/mini_ttt" />
+    </LinearLayout>
+
+</LinearLayout>
