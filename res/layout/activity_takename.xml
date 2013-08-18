@@ -5,29 +5,288 @@
     android:layout_marginTop="10dp"
     android:orientation="vertical"
     android:weightSum="10"
+    android:background="@color/Green"
+    
     tools:context=".MainActivity" >
-    <ImageView 
-        android:visibility="invisible"
+
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"/>
-    <LinearLayout 
-        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:src="@drawable/awesome_tictactoe" />
+
+    <LinearLayout
         android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
-        <TextView 
-            android:text="Name:"
-            android:fadingEdge="vertical|horizontal"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
-                        android:typeface="serif"
-            android:textColor="@android:color/white"
-                        android:textColorHighlight="@android:color/darker_gray"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".4"
+            android:fadingEdge="vertical|horizontal"
             android:shadowColor="@android:color/white"
-            
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="Player1:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
             android:textStyle="bold|italic"
-            
-       />
+            android:typeface="serif" />
+
+        <EditText
+            android:id="@+id/player1name"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".4"
+            android:background="@android:color/white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/beforeplayer2name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight=".5" />
+  
+    <LinearLayout
+        android:id="@+id/cplayer2name"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".4"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="Player2:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <EditText
+        	android:id="@+id/player2name"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".4"
+            
+            android:background="@android:color/white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+    </LinearLayout>
+ 
+ 
+ <TextView
+     		android:id="@+id/orloginusingfb"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight=".4"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="OR"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="10dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+ 
+     <Button
+        android:id="@+id/loginusingfb"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:fadingEdge="vertical|horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Take from Facebook"
+        android:textColor="@color/Orange"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+     <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5" />
+   <LinearLayout
+        android:id="@+id/clevel"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".4"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="Level:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <Spinner
+            android:id="@+id/level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".4"
+            android:entries="@array/levels_array"
+            android:prompt="@string/select_game_level" 
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+           
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+    </LinearLayout>
+
+
+
+    <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5" />
+
+    <CheckBox
+        android:id="@+id/showMe"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:checked="false"
+        android:fadingEdge="vertical|horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Always use same name"
+        android:textColor="@color/Orange"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_weight=".3"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="@string/back"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="20dp"
+            android:onClick="back"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".2" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="0dp"
+            
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_weight=".3"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:onClick="play"
+            android:shadowRadius="2"
+            android:text="Play >"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="20dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".1" />
+    </LinearLayout>
+
 </LinearLayout>
