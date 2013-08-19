@@ -17,19 +17,33 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+   
     <style name="ttt_cell">
         <item name="android:layout_width">@dimen/ttt_cell_width</item>
         <item name="android:layout_height">@dimen/ttt_cell_height</item>
-        <item name="android:padding">0dp</item>
-       <!--  <item name="android:background">@drawable/cell</item> -->
+       	<item name="android:background">@drawable/cell_1</item>
         <item name="android:clickable">false</item>
     </style>
-       <style name="mega_ttt_cell">
+    <style name="mega_ttt_cell">
         <item name="android:layout_width">@dimen/mega_ttt_cell_width</item>
         <item name="android:layout_height">@dimen/mega_ttt_cell_height</item>
-        <item name="android:padding">0dp</item>
-       <!--  <item name="android:background">@drawable/cell</item> -->
+       <item name="android:background">@drawable/cell_1</item>
         <item name="android:clickable">false</item>
+    </style>
+   <style name="app_logo">
+        <item name="android:layout_width">@dimen/app_logo_width</item>
+        <item name="android:layout_height">@dimen/app_logo_height</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:clickable">false</item>
+    </style>
+     <style name="game_title">
+        <item name="android:layout_width">@dimen/game_title_width</item>
+        <item name="android:layout_height">@dimen/game_title_height</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:clickable">false</item>
+    </style>
+    <style name="game_text"><item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="facebook_trio_button">
         <item name="android:width">150dp</item>

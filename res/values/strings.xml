@@ -8,6 +8,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="select_game_level">Difficulty Level</string>
 	<string name="select_first_move">First Move</string>
+ 
+   	<string name="count"> 3</string>
+    <string name="user_time">Time : 0 secs</string>
+    <string name="next_turn">Next turn :</string>
+    <string name="next_turn_you">Next turn : you</string>
+    <string name="next_turn_comp">Next turn : computer</string>
+     <string name="x_player">X [you] - 3</string>
+    <string name="o_player">O [comp] - 2</string>
+    <string name="hints">Hints</string>
+ 
+    
     <string-array name="levels_array">
         <item>Beginner</item>
         <item>Intermediate</item>

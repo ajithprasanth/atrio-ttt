@@ -1,64 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/game_bg"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_alignParentTop="true" >
 
         <include
-            android:id="@+id/ttt_0_0"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_0_1"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_0_2"
-            layout="@layout/mini_ttt" />
+            android:id="@+id/header_layout"
+            layout="@layout/game_header" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_centerInParent="true" >
 
         <include
-            android:id="@+id/ttt_1_0"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_1_1"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_1_2"
-            layout="@layout/mini_ttt" />
+            android:id="@+id/main_game_layout"
+            layout="@layout/game_layout" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_alignParentBottom="true" >
 
         <include
-            android:id="@+id/ttt_2_0"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_2_1"
-            layout="@layout/mini_ttt" />
-
-        <include
-            android:id="@+id/ttt_2_2"
-            layout="@layout/mini_ttt" />
+            android:id="@+id/footer_layout"
+            layout="@layout/game_footer" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
