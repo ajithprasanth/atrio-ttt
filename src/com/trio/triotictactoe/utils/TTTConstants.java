@@ -8,6 +8,9 @@ public class TTTConstants {
 	public static final String PLAYER2_NAME_KEY = "player2namekey";
 	public static final String PLAYER1_NAME_KEY = "player1namekey";
 	public static final String GAME_LEVEL_KEY = "gamelevelkey";
+	public static final String NO_SOUND = "appnosound";
+	public static final String NO_VIBRATOR = "appnovibrator";
+	public static final String FIRST_MOVE = "gamefirstmove";
 	
 	
 	

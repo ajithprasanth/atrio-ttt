@@ -1,6 +1,9 @@
 package com.trio.triotictactoe.views;
 
+import com.trio.triotictactoe.activity.SettingsActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,7 +24,8 @@ public class SettingsButton extends ImageButton{
 			
 			@Override
 			public void onClick(View v) {
-				//start settings page. 
+				Intent settingsAcivityIntent = new Intent(getContext(), SettingsActivity.class);
+				getContext().startActivity(settingsAcivityIntent);
 			}
 		});
 	}

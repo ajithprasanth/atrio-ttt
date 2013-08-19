@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
-		//player.prepareAsync();
+
 	}
 	
 	@Override

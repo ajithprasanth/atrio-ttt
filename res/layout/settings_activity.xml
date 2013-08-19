@@ -1,0 +1,278 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@color/Green"
+    
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:src="@drawable/awesome_tictactoe" />
+
+    <LinearLayout
+        android:id="@+id/cplayer2name"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:layout_weight="4.5"
+            android:shadowRadius="2"
+            android:text="No Vibration:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+       <CheckBox
+        android:id="@+id/vibrator"
+        android:layout_weight=".5"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:checked="false"
+        android:fadingEdge="vertical|horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text=""
+        android:textColor="@color/Orange"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+ 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:layout_weight="4.5"
+            android:shadowRadius="2"
+            android:text="No Sound:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+       <CheckBox
+        android:id="@+id/sound"
+        android:layout_weight=".5"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:checked="false"
+        android:fadingEdge="vertical|horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="3"
+        
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text=""
+        android:textColor="@color/Orange"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+ 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:layout_weight="4.5"
+            android:shadowRadius="2"
+            android:text="Show game settings:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+       <CheckBox
+        android:id="@+id/gamesettings"
+        android:layout_weight=".5"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:checked="false"
+        android:fadingEdge="vertical|horizontal"
+        android:shadowColor="@android:color/white"
+        android:shadowDx="3"
+        
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text=""
+        android:textColor="@color/Orange"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
+ 
+    </LinearLayout>
+       <LinearLayout
+        android:id="@+id/clevel"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:weightSum="5"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight="4"
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="First move:"
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif" />
+
+        <Spinner
+            android:id="@+id/firstmove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:entries="@array/XO"
+            android:prompt="@string/select_first_move" 
+            android:fadingEdge="vertical|horizontal"
+            android:shadowColor="@android:color/white"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius=".5"
+           
+            android:textColor="@color/Orange"
+            android:textColorHighlight="@android:color/darker_gray"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:typeface="serif"/>
+    </LinearLayout>
+       
+        <View 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            />
+       
+       <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="10" >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="playerVsPlayer"
+            android:padding="2dp"
+            android:src="@drawable/scores" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="playerVsPlayer"
+            android:padding="2dp"
+            android:src="@drawable/help" />
+        <ImageView 
+            android:id="@+id/finish"
+           android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="finish"
+            android:padding="2dp"
+            android:src="@drawable/exit"
+            />
+        <View
+        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:visibility="invisible" />
+        
+        <ImageView 
+            android:id="@+id/flike"
+           android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="flike"
+            android:padding="2dp"
+            android:src="@drawable/flike"
+            />
+    </LinearLayout>
+       
+    
+</LinearLayout>
