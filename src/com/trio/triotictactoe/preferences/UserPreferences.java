@@ -19,8 +19,10 @@ public class UserPreferences implements Preferences {
 	@Override
 	public void setPreference(String key, String value) {
 		Editor editor = pref.edit();
-		editor.putString(key,value	);
+		editor.putString(key,value);
+		
 		editor.commit();
+		System.out.println(pref.getString(key, null));
 		// TODO Auto-generated method stub
 	}
 

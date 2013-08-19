@@ -3,6 +3,7 @@ package com.trio.triotictactoe.activity;
 import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.preferences.Preferences;
 import com.trio.triotictactoe.preferences.UserPreferences;
+import com.trio.triotictactoe.utils.SoundUtils;
 import com.trio.triotictactoe.utils.TTTConstants;
 
 import android.text.Editable;
@@ -40,7 +41,7 @@ public class TakeNameActivity extends Activity {
 		Intent mainActivityIntent = new Intent(this, MainActivity.class);
 		mainActivityIntent.putExtra(TTTConstants.GAME_MODE_KEY, gameMode);
 		mainActivityIntent.putExtra(TTTConstants.PLAYER1_NAME_KEY, player1Name);
-		mainActivityIntent.putExtra(TTTConstants.PLAYER1_NAME_KEY, player1Name);
+		mainActivityIntent.putExtra(TTTConstants.PLAYER2_NAME_KEY, player2Name);
 		mainActivityIntent.putExtra(TTTConstants.GAME_LEVEL_KEY, level);
 		startActivity(mainActivityIntent);
 		finish();
@@ -59,6 +60,7 @@ public class TakeNameActivity extends Activity {
 	private void loadViews(){
 		levelView = findViewById(R.id.level);
 		player1NameView = findViewById(R.id.player1name);
+		
 		player2NameView = findViewById(R.id.player2name);
 		showMeView = findViewById(R.id.showMe);
 		beforeplayer2nameView = findViewById(R.id.beforeplayer2name);
@@ -98,7 +100,9 @@ public class TakeNameActivity extends Activity {
 	
 	public void play(View v){
 		updatePreferences();
+		new SoundUtils(this.getApplicationContext()).click();
 		startMainActivity();
+		
 	}
 
 	private TextWatcher getTextWatcher(){
@@ -134,13 +138,15 @@ public class TakeNameActivity extends Activity {
 	private void updatePreferences() {
 		
 		player1Name = ((EditText)player1NameView).getText().toString();
-		player1Name = ((EditText)player2NameView).getText().toString();
+		player2Name = ((EditText)player2NameView).getText().toString();
 		level = ((Spinner) levelView).getSelectedItemPosition();
 		showMe = !((CheckBox)showMeView).isChecked();
 		preferences.setPreference(TTTConstants.PLAYER1_NAME_KEY, player1Name);
-		preferences.setPreference(TTTConstants.PLAYER1_NAME_KEY, player2Name);
+		if(gameMode == TTTConstants.GAME_MODE_MULTI_PLAYER_LOCAL)
+		preferences.setPreference(TTTConstants.PLAYER2_NAME_KEY, player2Name);
 		preferences.setPreference(TTTConstants.GAME_LEVEL_KEY, String.valueOf(level));
 		preferences.setPreference(gameMode + TTTConstants.NO_SHOW_TAKE_NAME, String.valueOf(showMe));
+		
 	}
 	
 }
