@@ -30,4 +30,10 @@
         <item>O</item>
     </string-array>
     <string name="back">&lt; Back</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_current_game">Do you wish to save the current game before exiting?</string>
+    <string name="continue_saved_game">Do you wish to continue your last saved game?</string>
 </resources>

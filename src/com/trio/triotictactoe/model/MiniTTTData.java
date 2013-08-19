@@ -59,4 +59,8 @@ public class MiniTTTData {
 		return;
 	}
 
+	public void setData(CellState[][] data) {
+		this.data = data;
+	}
+
 }

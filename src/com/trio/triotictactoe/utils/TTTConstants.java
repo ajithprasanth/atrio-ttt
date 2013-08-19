@@ -11,7 +11,10 @@ public class TTTConstants {
 	public static final String NO_SOUND = "appnosound";
 	public static final String NO_VIBRATOR = "appnovibrator";
 	public static final String FIRST_MOVE = "gamefirstmove";
-	
-	
-	
+
+	// Save game constants
+	public static final String SAVED_GAME_DATA_KEY = "savedGameDatakey";
+	public static final String SAVED_GAME_TIME_KEY = "savedGameTimekey";
+	public static final String SERIALIZATION_CELL_DATA_SEPARATOR = ",";
+	public static final String SERIALIZATION_TTT_DATA_SEPARATOR = ";";
 }
