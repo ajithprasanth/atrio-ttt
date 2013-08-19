@@ -1,14 +1,18 @@
 package com.trio.triotictactoe.activity;
 
+import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.utils.TTTConstants;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.view.View;
-
-import com.trio.triotictactoe.R;
-import com.trio.triotictactoe.utils.TTTConstants;
 
 public class HomeActivity extends Activity {
 
@@ -21,7 +25,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
-		//player.prepareAsync();
+
 	}
 	
 	@Override

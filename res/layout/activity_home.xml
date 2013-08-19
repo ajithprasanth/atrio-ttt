@@ -118,7 +118,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:clickable="true"
-            android:onClick="settings"
             android:padding="2dp"
             android:background="@drawable/settings"
             />
