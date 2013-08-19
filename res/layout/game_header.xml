@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/game_general_padding"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/app_title"
+        style="@style/game_title"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/action_settings"
+        android:src="@drawable/game_title" />
+
+    <TextView
+        android:id="@+id/turn_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/app_title"
+        android:paddingTop="@dimen/game_general_padding"
+        android:text="@string/next_turn" 
+        style="@style/game_text"/>
+
+    <TextView
+        android:id="@+id/timer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@id/turn_view"
+        android:layout_below="@id/app_title"
+        android:paddingTop="@dimen/game_general_padding"
+        android:text="@string/user_time" 
+        style="@style/game_text"/>
+
+</RelativeLayout>
