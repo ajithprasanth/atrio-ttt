@@ -22,7 +22,7 @@ import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
 import com.trio.triotictactoe.views.ZoomedView;
 
-public class MainActivity extends Activity {
+public class GameActivity extends Activity {
 	
 	@SuppressLint("UseSparseArrays")
 	private Map<Integer, MiniTTTData> miniTTTDataMap = new HashMap<Integer, MiniTTTData>();
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_game);
 		gameView = findViewById(R.id.main_game_layout);
 		for (int i = 0; i <= 2; i++) {
 			for (int j = 0; j <= 2; j++) {
@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 				timerStarted = true;
 			}
 			fillCurrentLinearLayoutDataToOneTTT(clickedLinearLayout);
-			ZoomedView megaTTT = new ZoomedView(MainActivity.this, miniTTTDataMap.get(clickedLinearLayout.getId()));
+			ZoomedView megaTTT = new ZoomedView(GameActivity.this, miniTTTDataMap.get(clickedLinearLayout.getId()));
 			megaTTT.show();
 			megaTTT.setOnCancelListener(new OnCancelListener() {
 				@Override

@@ -38,7 +38,7 @@ public class TakeNameActivity extends Activity {
 	}
 	
 	private void startMainActivity(){
-		Intent mainActivityIntent = new Intent(this, MainActivity.class);
+		Intent mainActivityIntent = new Intent(this, GameActivity.class);
 		mainActivityIntent.putExtra(TTTConstants.GAME_MODE_KEY, gameMode);
 		mainActivityIntent.putExtra(TTTConstants.PLAYER1_NAME_KEY, player1Name);
 		mainActivityIntent.putExtra(TTTConstants.PLAYER2_NAME_KEY, player2Name);
