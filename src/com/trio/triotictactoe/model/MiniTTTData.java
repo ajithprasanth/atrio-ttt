@@ -13,6 +13,14 @@ public class MiniTTTData {
 	private int userClickedRowIndex;
 	private int userClickedColumnIndex;
 
+	public MiniTTTData() {
+		for (int i = 0; i <= 2; i++) {
+			for (int j = 0; j <= 2; j++) {
+				data[i][j] = CellState.EMPTY;
+			}
+		}
+	}
+
 	public CellState getCell(int row, int column) {
 		checkInput(row, column);
 		return data[row][column];

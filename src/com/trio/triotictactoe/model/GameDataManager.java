@@ -45,7 +45,7 @@ public class GameDataManager {
 	 */
 	public void storeThisGame() {
 		prefs.setPreference(TTTConstants.SAVED_GAME_TIME_KEY, Long.toString(System.currentTimeMillis() - activity.getStartTime()));
-		prefs.setPreference(TTTConstants.SAVED_GAME_DATA_KEY, getSerializeGameData());
+		prefs.setPreference(TTTConstants.SAVED_GAME_DATA_KEY, getSerializedGameData());
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class GameDataManager {
 	 * Return serialized data
 	 * @return
 	 */
-	private String getSerializeGameData() {
+	private String getSerializedGameData() {
 		View gameLayout = activity.findViewById(R.id.main_game_layout);
 		StringBuffer serializedData = new StringBuffer();
 
