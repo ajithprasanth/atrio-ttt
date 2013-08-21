@@ -15,89 +15,88 @@
         android:layout_weight="2.5"
         android:src="@drawable/awesome_tictactoe" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/cplayer2name"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:weightSum="5"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
             android:layout_height="fill_parent"
             android:layout_gravity="left|center_vertical"
             android:fadingEdge="vertical|horizontal"
             android:shadowColor="@android:color/white"
+            android:layout_alignParentLeft="true"
             android:shadowDx="3"
             android:shadowDy="3"
-            android:layout_weight="4.5"
             android:shadowRadius="2"
             android:text="No Vibration:"
             android:textColor="@color/Orange"
             android:textColorHighlight="@android:color/darker_gray"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold|italic"
             android:typeface="serif" />
 
        <CheckBox
         android:id="@+id/vibrator"
-        android:layout_weight=".5"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_gravity="end"
-        android:gravity="end"
+		android:gravity="center_vertical"  
+        
         android:checked="false"
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="3"
         android:shadowDy="3"
+        android:layout_alignParentRight="true"
         android:shadowRadius="2"
         android:text=""
         android:textColor="@color/Orange"
         android:textColorHighlight="@android:color/darker_gray"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold|italic"
         android:typeface="serif" />
  
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:weightSum="5"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="left|center_vertical"
+            android:gravity="center_vertical"
             android:fadingEdge="vertical|horizontal"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
-            android:shadowDy="3"
-            android:layout_weight="4.5"
+			android:layout_alignParentLeft="true"
+	        android:shadowDy="3"
             android:shadowRadius="2"
             android:text="No Sound:"
             android:textColor="@color/Orange"
             android:textColorHighlight="@android:color/darker_gray"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold|italic"
             android:typeface="serif" />
 
        <CheckBox
         android:id="@+id/sound"
-        android:layout_weight=".5"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_gravity="end"
-        android:gravity="end"
+        android:gravity="center_vertical"
+		android:layout_alignParentRight="true"
         android:checked="false"
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
@@ -112,62 +111,60 @@
         android:textStyle="bold|italic"
         android:typeface="serif" />
  
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:weightSum="5"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="left|center_vertical"
             android:fadingEdge="vertical|horizontal"
+            android:gravity="center_vertical"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
             android:shadowDy="3"
-            android:layout_weight="4.5"
+            android:layout_alignParentLeft="true"
             android:shadowRadius="2"
             android:text="Show game settings:"
             android:textColor="@color/Orange"
             android:textColorHighlight="@android:color/darker_gray"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold|italic"
             android:typeface="serif" />
 
        <CheckBox
         android:id="@+id/gamesettings"
-        android:layout_weight=".5"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_gravity="end"
-        android:gravity="end"
+        android:layout_alignParentRight="true"
         android:checked="false"
+        android:gravity="center_vertical"
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="3"
         
         android:shadowDy="3"
         android:shadowRadius="2"
-        android:text=""
+       android:text=""
         android:textColor="@color/Orange"
         android:textColorHighlight="@android:color/darker_gray"
         android:textSize="20dp"
         android:textStyle="bold|italic"
         android:typeface="serif" />
  
-    </LinearLayout>
-       <LinearLayout
+    </RelativeLayout>
+       <RelativeLayout
         android:id="@+id/clevel"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:weightSum="5"
-        android:layout_weight="1"
+	       android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         
@@ -175,10 +172,11 @@
 
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            android:gravity="center_vertical"
             android:layout_gravity="left|center_vertical"
-            android:layout_weight="4"
+			android:layout_alignParentLeft="true"
             android:fadingEdge="vertical|horizontal"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
@@ -187,30 +185,29 @@
             android:text="First move:"
             android:textColor="@color/Orange"
             android:textColorHighlight="@android:color/darker_gray"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold|italic"
             android:typeface="serif" />
 
         <Spinner
             android:id="@+id/firstmove"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:entries="@array/XO"
-            android:prompt="@string/select_first_move" 
+             android:prompt="@string/select_first_move" 
             android:fadingEdge="vertical|horizontal"
+            android:gravity="center_vertical"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
             android:shadowDy="3"
             android:shadowRadius=".5"
-           
+			android:layout_alignParentRight="true"           
             android:textColor="@color/Orange"
             android:textColorHighlight="@android:color/darker_gray"
             android:textSize="30dp"
             android:textStyle="bold|italic"
             android:typeface="serif"/>
-    </LinearLayout>
+    </RelativeLayout>
        
         <View 
             android:layout_weight="1"
@@ -244,21 +241,11 @@
             android:onClick="playerVsPlayer"
             android:padding="2dp"
             android:src="@drawable/help" />
-        <ImageView 
-            android:id="@+id/finish"
-           android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:clickable="true"
-            android:onClick="finish"
-            android:padding="2dp"
-            android:src="@drawable/exit"
-            />
+        
         <View
         android:layout_height="fill_parent"
         android:layout_width="0dp"
-        android:layout_weight="6"
+        android:layout_weight="7"
         android:visibility="invisible" />
         
         <ImageView 
