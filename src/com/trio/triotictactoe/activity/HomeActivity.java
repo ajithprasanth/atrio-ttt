@@ -1,18 +1,13 @@
 package com.trio.triotictactoe.activity;
 
-import com.trio.triotictactoe.R;
-import com.trio.triotictactoe.utils.TTTConstants;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.view.View;
+
+import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.utils.TTTConstants;
 
 public class HomeActivity extends Activity {
 
@@ -24,8 +19,9 @@ public class HomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
-
+		//player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
+		findViewById(R.id.playervscomputer).setOnClickListener(layoutClickListener);
+		findViewById(R.id.playervsplayer).setOnClickListener(layoutClickListener);
 	}
 	
 	@Override
@@ -35,13 +31,13 @@ public class HomeActivity extends Activity {
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-		if(hasFocus){
-			player.start();
-			((AnimationDrawable)findViewById(R.id.textview).getBackground()).start();
-		}else{
-			player.pause();
-			((AnimationDrawable)findViewById(R.id.textview).getBackground()).stop();
-		}
+//		if(hasFocus){
+//			player.start();
+//			((AnimationDrawable)findViewById(R.id.textview).getBackground()).start();
+//		}else{
+//			player.pause();
+//			((AnimationDrawable)findViewById(R.id.textview).getBackground()).stop();
+//		}
 	}
 	
 	public void finish(View v){
@@ -59,5 +55,27 @@ public class HomeActivity extends Activity {
 		nameAcivityIntent.putExtra(TTTConstants.GAME_MODE_KEY, TTTConstants.GAME_MODE_SINGLE_PLAYER);
 		startActivity(nameAcivityIntent);
 	}
+	public void settingsActivity(View v){
+		Intent settingsAcivityIntent = new Intent(this, SettingsActivity.class);
+		startActivity(settingsAcivityIntent);
+	}
+	
+	/**
+	 * Click listener for individual TTT (Linear Layout)
+	 */
+	private View.OnClickListener layoutClickListener = new View.OnClickListener() {
+		@Override
+		public void onClick(final View clickedLinearLayout) {
+			if(clickedLinearLayout.getId() == R.id.playervsplayer){
+				playerVsPlayer(clickedLinearLayout);
+			}else if (clickedLinearLayout.getId() == R.id.playervscomputer){
+				playerVsComputer(clickedLinearLayout);
+			}else if(clickedLinearLayout.getId() == R.id.settings){
+				settingsActivity(clickedLinearLayout);
+			}
+				
+			
+		}
+	};
 	
 }
