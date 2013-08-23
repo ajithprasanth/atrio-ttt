@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
 		android:gravity="center_vertical"  
-        
+        android:onClick="click"
         android:checked="false"
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
@@ -101,7 +101,7 @@
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="3"
-        
+        android:onClick="click"
         android:shadowDy="3"
         android:shadowRadius="2"
         android:text=""
@@ -149,7 +149,7 @@
         android:fadingEdge="vertical|horizontal"
         android:shadowColor="@android:color/white"
         android:shadowDx="3"
-        
+        android:onClick="click"
         android:shadowDy="3"
         android:shadowRadius="2"
        android:text=""
@@ -197,6 +197,7 @@
              android:prompt="@string/select_first_move" 
             android:fadingEdge="vertical|horizontal"
             android:gravity="center_vertical"
+            android:onClick="click"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
             android:shadowDy="3"

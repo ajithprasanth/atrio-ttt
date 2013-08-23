@@ -1,5 +1,7 @@
 package com.trio.triotictactoe.preferences;
 
+import com.google.inject.Inject;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -7,6 +9,7 @@ import android.content.SharedPreferences.Editor;
 public class UserPreferences implements Preferences {
 
 	private SharedPreferences pref;
+	@Inject
 	public UserPreferences(Context context) {
 		pref = context.getSharedPreferences(context.getApplicationInfo().packageName, Context.MODE_PRIVATE);
 	}

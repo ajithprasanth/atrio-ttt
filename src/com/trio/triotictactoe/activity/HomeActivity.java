@@ -6,12 +6,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.inject.Inject;
 import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.guice.ApplicationModule;
+import com.trio.triotictactoe.utils.SoundUtils;
 import com.trio.triotictactoe.utils.TTTConstants;
 
 public class HomeActivity extends Activity {
-
-	//View playerVsPlayer, exit, settings, 
+	
+	@Inject
+	private SoundUtils soundUtils;
 	
 	MediaPlayer player;
 	
@@ -19,7 +23,8 @@ public class HomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		//player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
+		ApplicationModule.Inject(this);
+		player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
 		findViewById(R.id.playervscomputer).setOnClickListener(layoutClickListener);
 		findViewById(R.id.playervsplayer).setOnClickListener(layoutClickListener);
 	}
@@ -31,16 +36,15 @@ public class HomeActivity extends Activity {
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-//		if(hasFocus){
-//			player.start();
-//			((AnimationDrawable)findViewById(R.id.textview).getBackground()).start();
-//		}else{
-//			player.pause();
-//			((AnimationDrawable)findViewById(R.id.textview).getBackground()).stop();
-//		}
+		if(hasFocus){
+			player.start();
+		}else{
+			player.pause();
+		}
 	}
 	
 	public void finish(View v){
+		soundUtils.click();
 		this.finish();
 	}
 	
@@ -68,13 +72,14 @@ public class HomeActivity extends Activity {
 		public void onClick(final View clickedLinearLayout) {
 			if(clickedLinearLayout.getId() == R.id.playervsplayer){
 				playerVsPlayer(clickedLinearLayout);
+				soundUtils.click();
 			}else if (clickedLinearLayout.getId() == R.id.playervscomputer){
 				playerVsComputer(clickedLinearLayout);
+				soundUtils.click();
 			}else if(clickedLinearLayout.getId() == R.id.settings){
 				settingsActivity(clickedLinearLayout);
+				soundUtils.click();
 			}
-				
-			
 		}
 	};
 	

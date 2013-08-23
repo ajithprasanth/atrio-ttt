@@ -1,5 +1,6 @@
 package com.trio.triotictactoe.utils;
 
+import com.google.inject.Inject;
 import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.preferences.Preferences;
 import com.trio.triotictactoe.preferences.UserPreferences;
@@ -16,6 +17,7 @@ public class SoundUtils {
 	private Vibrator vibrator;
 	private Preferences preferences;
 	
+	@Inject
 	public SoundUtils(Context context) {
 		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		pool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
