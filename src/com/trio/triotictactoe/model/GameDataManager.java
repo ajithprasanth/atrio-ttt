@@ -19,13 +19,13 @@ import com.trio.triotictactoe.utils.TTTConstants;
  */
 public class GameDataManager {
 	private GameActivity activity;
-	private OnClickListener linearLayoutListener;
+	private OnClickListener layoutListener;
 	private UserPreferences prefs;
 
 	public GameDataManager(GameActivity gameActivity, OnClickListener listener) {
 		this.activity = gameActivity;
-		this.linearLayoutListener = listener;
-		prefs = new UserPreferences(activity);
+		this.layoutListener = listener;
+		this.prefs = new UserPreferences(activity);
 	}
 
 	public boolean isPreviousGameDataFound() {
@@ -52,6 +52,9 @@ public class GameDataManager {
 	 * Populate data from a previous game
 	 */
 	public void restorePreviousGame() {
+		/*
+		 * TODO: Restore library also at this point
+		 */
 		SparseArray<MiniTTTData> newMiniTTTDataMap = getDeserializedGameData();
 
 		for (int i = 0; i <= 2; i++) {
@@ -62,10 +65,9 @@ public class GameDataManager {
 				View view = activity.findViewById(R.id.main_game_layout).findViewById(viewId);
 				view.setTag(R.dimen.row_id, i);
 				view.setTag(R.dimen.col_id, j);
-				view.setOnClickListener(linearLayoutListener);
+				view.setOnClickListener(layoutListener);
 
 				MiniTTTData oneTTTData = newMiniTTTDataMap.get(viewId);
-				System.out.println("viewIdStr: " + viewIdStr);
 
 				for (int x = 0; x <= 2; x++) {
 					for (int y = 0; y <= 2; y++) {
@@ -77,6 +79,9 @@ public class GameDataManager {
 
 						switch (userState) {
 							case EMPTY :
+								Drawable emptyCell = activity.getResources().getDrawable(R.drawable.cell_1);
+								cell.setBackgroundDrawable(emptyCell);
+								cell.setTag(R.dimen.cell_state, CellState.EMPTY);
 								break;
 
 							case CROSS :
@@ -91,6 +96,8 @@ public class GameDataManager {
 								cell.setTag(R.dimen.cell_state, CellState.NOUGHTS);
 								break;
 						}
+
+						cell.invalidate();
 					}
 				}
 			}
@@ -104,6 +111,9 @@ public class GameDataManager {
 	 * Create a brand new game
 	 */
 	public void createEmptyGameCells() {
+		/*
+		 * TODO: Restore library also to be empty at this point
+		 */
 		View gameLayout = activity.findViewById(R.id.main_game_layout);
 		SparseArray<MiniTTTData> newMiniTTTDataMap = new SparseArray<MiniTTTData>();
 
@@ -115,7 +125,7 @@ public class GameDataManager {
 
 				view.setTag(R.dimen.row_id, i);
 				view.setTag(R.dimen.col_id, j);
-				view.setOnClickListener(linearLayoutListener);
+				view.setOnClickListener(layoutListener);
 
 				newMiniTTTDataMap.put(viewId, new MiniTTTData());
 			}
@@ -128,15 +138,15 @@ public class GameDataManager {
 	 * Before calling zoom view, fill the required data in MiniTTTData for that layout.
 	 * This is also called after the system updates with its reply to the user.
 	 * 
-	 * @param clickedLinearLayout
+	 * @param clickedLayout
 	 */
-	public void fillClickedLinearLayoutToOneTTTData(final View clickedLinearLayout) {
-		MiniTTTData oneTTTdata = activity.getMiniTTTDataMap().get(clickedLinearLayout.getId());
+	public void fillClickedLayoutToOneTTTData(final View clickedLayout) {
+		MiniTTTData oneTTTdata = activity.getMiniTTTDataMap().get(clickedLayout.getId());
 		for (int i = 0; i <= 2; i++) {
 			for (int j = 0; j <= 2; j++) {
 				String viewIdStr = "b_" + i + "_" + j;
 				int viewId = activity.getResources().getIdentifier(viewIdStr, "id", activity.getPackageName());
-				Button cell = (Button) clickedLinearLayout.findViewById(viewId);
+				Button cell = (Button) clickedLayout.findViewById(viewId);
 
 				if (cell != null) {
 					CellState state = (CellState) cell.getTag(R.dimen.cell_state);
@@ -213,22 +223,19 @@ public class GameDataManager {
 	 * De-serialize the last game data
 	 */
 	private SparseArray<MiniTTTData> getDeserializedGameData() {
-		String oldData = prefs.getPreference(TTTConstants.SAVED_GAME_DATA_KEY, null);
+		String oldData = prefs.getPreference(TTTConstants.SAVED_GAME_DATA_KEY, TTTConstants.INITIAL_GAME_STATE);
 		SparseArray<MiniTTTData> miniTTTDataMap = new SparseArray<MiniTTTData>();
 
-		if (oldData != null) {
-			String[] individualTTTData = oldData.split(TTTConstants.SERIALIZATION_TTT_DATA_SEPARATOR);
+		String[] individualTTTData = oldData.split(TTTConstants.SERIALIZATION_TTT_DATA_SEPARATOR);
 
-			for (int i = 0; i <= 2; i++) {
-				for (int j = 0; j <= 2; j++) {
-					String viewIdStr = "ttt_" + i + "_" + j;
-					int viewId = activity.getResources().getIdentifier(viewIdStr, "id", activity.getPackageName());
+		for (int i = 0; i <= 2; i++) {
+			for (int j = 0; j <= 2; j++) {
+				String viewIdStr = "ttt_" + i + "_" + j;
+				int viewId = activity.getResources().getIdentifier(viewIdStr, "id", activity.getPackageName());
 
-					int index = i * 3 + j;
-					miniTTTDataMap.put(viewId, getStringAsOneTTTData(individualTTTData[index]));
-				}
+				int index = i * 3 + j;
+				miniTTTDataMap.put(viewId, getStringAsOneTTTData(individualTTTData[index]));
 			}
-
 		}
 
 		return miniTTTDataMap;

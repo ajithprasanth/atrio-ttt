@@ -6,12 +6,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +23,8 @@ import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.model.GameDataManager;
 import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
+import com.trio.triotictactoe.utils.ViewUtils;
+import com.trio.triotictactoe.views.OptionsMenuView;
 import com.trio.triotictactoe.views.ZoomedView;
 
 public class GameActivity extends Activity {
@@ -71,11 +77,11 @@ public class GameActivity extends Activity {
 	}
 
 	/**
-	 * Click listener for individual TTT (Linear Layout)
+	 * Click listener for individual TTT
 	 */
 	private View.OnClickListener layoutClickListener = new View.OnClickListener() {
 		@Override
-		public void onClick(final View clickedLinearLayout) {
+		public void onClick(final View clickedLayout) {
 			if(!timerStarted){
 				startTime = System.currentTimeMillis();
 				initiateUserTimer();
@@ -83,14 +89,14 @@ public class GameActivity extends Activity {
 			}
 
 			// Populate data for this mini TTT before calling zoom view
-			gameDataManager.fillClickedLinearLayoutToOneTTTData(clickedLinearLayout);
+			gameDataManager.fillClickedLayoutToOneTTTData(clickedLayout);
 
-			ZoomedView megaTTT = new ZoomedView(GameActivity.this, miniTTTDataMap.get(clickedLinearLayout.getId()));
+			ZoomedView megaTTT = new ZoomedView(GameActivity.this, miniTTTDataMap.get(clickedLayout.getId()));
 			megaTTT.show();
 			megaTTT.setOnCancelListener(new OnCancelListener() {
 				@Override
 				public void onCancel(DialogInterface canceledDialog) {
-					handleUserClick(clickedLinearLayout);
+					handleUserClick(clickedLayout);
 				}
 			});
 		}
@@ -98,19 +104,19 @@ public class GameActivity extends Activity {
 
 	/**
 	 * React to the user click in zoom view
-	 * @param clickedLinearLayout
+	 * @param clickedLayout
 	 */
-	private void handleUserClick(final View clickedLinearLayout) {
-		MiniTTTData oneTTTdata = miniTTTDataMap.get(clickedLinearLayout.getId());
+	private void handleUserClick(final View clickedLayout) {
+		MiniTTTData oneTTTdata = miniTTTDataMap.get(clickedLayout.getId());
 		if (oneTTTdata.hasUserSelectedData()) {
 			hasUserMadeAtleastOneMove = true;
 
-			applyUserSelection(clickedLinearLayout);
+			applyUserSelection(clickedLayout);
 
 			setNextTurnComp();
 
-			int row = ((Integer) clickedLinearLayout.getTag(R.dimen.row_id)) * 3 + oneTTTdata.getUserClickedRowIndex();
-			int col = ((Integer) clickedLinearLayout.getTag(R.dimen.col_id)) * 3 + oneTTTdata.getUserClickedColumnIndex();
+			int row = ((Integer) clickedLayout.getTag(R.dimen.row_id)) * 3 + oneTTTdata.getUserClickedRowIndex();
+			int col = ((Integer) clickedLayout.getTag(R.dimen.col_id)) * 3 + oneTTTdata.getUserClickedColumnIndex();
 			getNextSystemStep(row, col);
 
 			applySystemSelection();
@@ -158,22 +164,33 @@ public class GameActivity extends Activity {
 
 		String viewIdStr = "ttt_" + llRow + "_" + llCol;
 		int layoutViewId = getResources().getIdentifier(viewIdStr, "id", getPackageName());
-		View linearLayout = gameView.findViewById(layoutViewId);
+		View layout = gameView.findViewById(layoutViewId);
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
 				if (lastResult.state[i][j] != 0) {
 					String tttViewIdStr = "ttt_" + i + "_" + j;
 					int tttViewId = getResources().getIdentifier(tttViewIdStr, "id", getPackageName());
-					View tttView = findViewById(tttViewId);
+					RelativeLayout tttView = (RelativeLayout) findViewById(tttViewId);
 					tttView.setClickable(false);
+
+					ViewUtils.applyAlphaToViewGroup(1.0f, 0.5f, 0, (ViewGroup) tttView.findViewById(R.id.cells_layout));
+
+					int imageId = R.drawable.o_placeholder;
+					if(lastResult.state[i][j] < 0) {
+						imageId = R.drawable.x_placeholder;
+					}
+
+					Resources resources = getResources();
+					ViewUtils.addImageToView(this, tttView, (int) resources.getDimension(R.dimen.ttt_cell_width) * 3,
+							(int) resources.getDimension(R.dimen.ttt_cell_height) * 3, imageId);
 				}
 			}
-
 		}
+
 		llRow = lastResult.i % 3;
 		llCol = lastResult.j % 3;
 		viewIdStr = "b_" + llRow + "_" + llCol;
-		Button cell = (Button) linearLayout.findViewById(getResources().getIdentifier(viewIdStr, "id", getPackageName()));
+		Button cell = (Button) layout.findViewById(getResources().getIdentifier(viewIdStr, "id", getPackageName()));
 
 		if (cell != null) {
 			Drawable oMove = getResources().getDrawable(R.drawable.o_move);
@@ -182,7 +199,7 @@ public class GameActivity extends Activity {
 		}
 
 		// Keep the miniTTTDataMap in sync with the system selection
-		gameDataManager.fillClickedLinearLayoutToOneTTTData(linearLayout);
+		gameDataManager.fillClickedLayoutToOneTTTData(layout);
 
 		if (lastResult.win) {
 			Toast.makeText(this, "You Won !!!", Toast.LENGTH_LONG).show();
@@ -274,6 +291,32 @@ public class GameActivity extends Activity {
 		initiateUserTimer();
 		timerStarted = true;
 		startTime = startTime - timeAlreadySpent;
+	}
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			finish();
+
+		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
+			OptionsMenuView optionsMenu = new OptionsMenuView(this);
+			optionsMenu.show();
+		}
+		return false;
+	}
+
+	public void restartGame() {
+		gameDataManager.clearSavedGame();
+		gameDataManager.restorePreviousGame();
+	}
+
+	public void saveAndExit() {
+		gameDataManager.storeThisGame();
+		this.exit();
+	}
+
+	public void exit() {
+		this.finish();
 	}
 
 }
