@@ -19,12 +19,12 @@ import com.trio.triotictactoe.utils.TTTConstants;
  */
 public class GameDataManager {
 	private GameActivity activity;
-	private OnClickListener linearLayoutListener;
+	private OnClickListener layoutListener;
 	private UserPreferences prefs;
 
 	public GameDataManager(GameActivity gameActivity, OnClickListener listener) {
 		this.activity = gameActivity;
-		this.linearLayoutListener = listener;
+		this.layoutListener = listener;
 		prefs = new UserPreferences(activity);
 	}
 
@@ -62,7 +62,7 @@ public class GameDataManager {
 				View view = activity.findViewById(R.id.main_game_layout).findViewById(viewId);
 				view.setTag(R.dimen.row_id, i);
 				view.setTag(R.dimen.col_id, j);
-				view.setOnClickListener(linearLayoutListener);
+				view.setOnClickListener(layoutListener);
 
 				MiniTTTData oneTTTData = newMiniTTTDataMap.get(viewId);
 				System.out.println("viewIdStr: " + viewIdStr);
@@ -115,7 +115,7 @@ public class GameDataManager {
 
 				view.setTag(R.dimen.row_id, i);
 				view.setTag(R.dimen.col_id, j);
-				view.setOnClickListener(linearLayoutListener);
+				view.setOnClickListener(layoutListener);
 
 				newMiniTTTDataMap.put(viewId, new MiniTTTData());
 			}
@@ -128,15 +128,15 @@ public class GameDataManager {
 	 * Before calling zoom view, fill the required data in MiniTTTData for that layout.
 	 * This is also called after the system updates with its reply to the user.
 	 * 
-	 * @param clickedLinearLayout
+	 * @param clickedLayout
 	 */
-	public void fillClickedLinearLayoutToOneTTTData(final View clickedLinearLayout) {
-		MiniTTTData oneTTTdata = activity.getMiniTTTDataMap().get(clickedLinearLayout.getId());
+	public void fillClickedLayoutToOneTTTData(final View clickedLayout) {
+		MiniTTTData oneTTTdata = activity.getMiniTTTDataMap().get(clickedLayout.getId());
 		for (int i = 0; i <= 2; i++) {
 			for (int j = 0; j <= 2; j++) {
 				String viewIdStr = "b_" + i + "_" + j;
 				int viewId = activity.getResources().getIdentifier(viewIdStr, "id", activity.getPackageName());
-				Button cell = (Button) clickedLinearLayout.findViewById(viewId);
+				Button cell = (Button) clickedLayout.findViewById(viewId);
 
 				if (cell != null) {
 					CellState state = (CellState) cell.getTag(R.dimen.cell_state);
