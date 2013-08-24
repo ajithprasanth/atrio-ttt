@@ -36,4 +36,9 @@
     <string name="cancel">Cancel</string>
     <string name="save_current_game">Do you wish to save the current game before exiting?</string>
     <string name="continue_saved_game">Do you wish to continue your last saved game?</string>
+
+    <string name="help">Help</string>
+    <string name="restart">Restart</string>
+    <string name="exit_game">Exit Game</string>
+    <string name="save_and_exit">Save and Exit</string>
 </resources>

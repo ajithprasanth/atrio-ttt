@@ -12,14 +12,14 @@ public class SettingsButton extends ImageButton{
 
 	public SettingsButton(Context context) {
 		super(context);
-		setClickListner();
+		setClickListener();
 	}
 	public SettingsButton(Context context,AttributeSet attr){
 		super(context,attr);
-		setClickListner();
+		setClickListener();
 	}
 	
-	private void setClickListner(){
+	private void setClickListener(){
 			setOnClickListener(new OnClickListener() {
 			
 			@Override

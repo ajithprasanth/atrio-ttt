@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import com.trio.triotictactoe.model.GameDataManager;
 import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
 import com.trio.triotictactoe.utils.ViewUtils;
+import com.trio.triotictactoe.views.OptionsMenuView;
 import com.trio.triotictactoe.views.ZoomedView;
 
 public class GameActivity extends Activity {
@@ -289,6 +291,32 @@ public class GameActivity extends Activity {
 		initiateUserTimer();
 		timerStarted = true;
 		startTime = startTime - timeAlreadySpent;
+	}
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			finish();
+
+		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
+			OptionsMenuView optionsMenu = new OptionsMenuView(this);
+			optionsMenu.show();
+		}
+		return false;
+	}
+
+	public void restartGame() {
+		gameDataManager.clearSavedGame();
+		gameDataManager.restorePreviousGame();
+	}
+
+	public void saveAndExit() {
+		gameDataManager.storeThisGame();
+		this.exit();
+	}
+
+	public void exit() {
+		this.finish();
 	}
 
 }
