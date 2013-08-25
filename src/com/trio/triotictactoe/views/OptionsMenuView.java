@@ -20,8 +20,8 @@ public class OptionsMenuView extends Dialog {
 
 	private GameActivity gameActivity;
 
-	private int[] menuItemImages = {R.drawable.help, R.drawable.help, R.drawable.exit, R.drawable.exit};
-	private int[] menuItemText = {R.string.restart, R.string.help, R.string.exit_game, R.string.save_and_exit};
+	private int[] menuItemImages = {R.drawable.help, R.drawable.settings, R.drawable.exit, R.drawable.exit};
+	private int[] menuItemText = {R.string.restart, R.string.settings, R.string.exit_game, R.string.save_and_exit};
 
 	public OptionsMenuView(GameActivity activity) {
 		super(activity, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
@@ -75,10 +75,8 @@ public class OptionsMenuView extends Dialog {
 					gameActivity.restartGame();
 					break;
 
-				case R.string.help :
-					/*
-					 * TODO: Have a help page and handle this case
-					 */
+				case R.string.settings :
+					gameActivity.goToSettings();
 					break;
 
 				case R.string.exit_game :
