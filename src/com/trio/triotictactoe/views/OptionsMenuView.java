@@ -1,14 +1,9 @@
 package com.trio.triotictactoe.views;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,23 +11,13 @@ import android.widget.TextView;
 import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.activity.GameActivity;
 
-public class OptionsMenuView extends Dialog {
-
-	private GameActivity gameActivity;
+public class OptionsMenuView extends GameActivityDialogView {
 
 	private int[] menuItemImages = {R.drawable.help, R.drawable.settings, R.drawable.exit, R.drawable.exit};
 	private int[] menuItemText = {R.string.restart, R.string.settings, R.string.exit_game, R.string.save_and_exit};
 
 	public OptionsMenuView(GameActivity activity) {
-		super(activity, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
-
-		this.gameActivity = activity;
-
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-		this.getWindow().getAttributes().dimAmount = 0.7f;
-		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-		this.setCancelable(true);
+		super(activity);
 		this.setContentView(R.layout.options_menu);
 		addItemsToLayout();
 	}
@@ -53,13 +38,7 @@ public class OptionsMenuView extends Dialog {
 			textView.setText(resources.getString(menuItemText[i]));
 
 			// Set tags to follow up in click listener
-			imageView.setTag(menuItemText[i]);
-			textView.setTag(menuItemText[i]);
 			menuItem.setTag(menuItemText[i]);
-
-			// Set click listeners
-			imageView.setOnClickListener(menuItemClickListener);
-			textView.setOnClickListener(menuItemClickListener);
 			menuItem.setOnClickListener(menuItemClickListener);
 
 			rootLayout.addView(menuItem);

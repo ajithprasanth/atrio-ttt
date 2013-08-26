@@ -8,8 +8,12 @@
     <dimen name="mega_ttt_cell_width">90dp</dimen>
     <dimen name="mega_ttt_cell_height">90dp</dimen>
     <dimen name="ttt_padding">5dp</dimen>
+
+    <!-- Tag constants -->
     <dimen name="col_id">0dp</dimen>
     <dimen name="row_id">0dp</dimen>
+    <dimen name="is_mini_ttt_complete">0dp</dimen>
+
     <dimen name="cell_state">0dp</dimen>
     <dimen name="timer_height">30dp</dimen>
     <dimen name="timer_width">20dp</dimen>

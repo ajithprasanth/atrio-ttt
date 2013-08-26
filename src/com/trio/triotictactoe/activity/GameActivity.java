@@ -174,16 +174,21 @@ public class GameActivity extends Activity {
 					RelativeLayout tttView = (RelativeLayout) findViewById(tttViewId);
 					tttView.setClickable(false);
 
-					ViewUtils.applyAlphaToViewGroup(1.0f, 0.5f, 0, (ViewGroup) tttView.findViewById(R.id.cells_layout));
+					// Set image only if it is not set already
+					if (tttView.getTag(R.dimen.is_mini_ttt_complete) == null) {
+						ViewUtils.applyAlphaToViewGroup(1.0f, 0.5f, 0, (ViewGroup) tttView.findViewById(R.id.cells_layout));
 
-					int imageId = R.drawable.o_placeholder;
-					if(lastResult.state[i][j] < 0) {
-						imageId = R.drawable.x_placeholder;
+						int imageId = R.drawable.o_placeholder;
+						if (lastResult.state[i][j] < 0) {
+							imageId = R.drawable.x_placeholder;
+						}
+
+						Resources resources = getResources();
+						ViewUtils.addImageToView(this, tttView, (int) resources.getDimension(R.dimen.ttt_cell_width) * 3,
+								(int) resources.getDimension(R.dimen.ttt_cell_height) * 3, imageId);
+
+						tttView.setTag(R.dimen.is_mini_ttt_complete, new Object());
 					}
-
-					Resources resources = getResources();
-					ViewUtils.addImageToView(this, tttView, (int) resources.getDimension(R.dimen.ttt_cell_width) * 3,
-							(int) resources.getDimension(R.dimen.ttt_cell_height) * 3, imageId);
 				}
 			}
 		}

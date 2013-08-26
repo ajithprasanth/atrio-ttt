@@ -1,62 +1,25 @@
 package com.trio.triotictactoe.views;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.activity.GameActivity;
 import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
+import com.trio.triotictactoe.utils.ViewUtils;
 
-public class ZoomedView extends Dialog {
+public class ZoomedView extends GameActivityDialogView {
 	private MiniTTTData data;
 
-	private Activity activity;
-
-	public ZoomedView(Activity activity, MiniTTTData data) {
-		super(activity, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+	public ZoomedView(GameActivity activity, MiniTTTData data) {
+		super(activity);
 		this.data = data;
-		this.activity = activity;
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setBackgroundDrawable(
-				new ColorDrawable(Color.TRANSPARENT));
-		WindowManager.LayoutParams lp = this.getWindow().getAttributes();
-		lp.dimAmount = .7f;
-		this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND); 
-		this.setCancelable(true);
-		this.setContentView(R.layout.mega_ttt);
-
-		for (int i = 0; i <= 2; i++) {
-			for (int j = 0; j <= 2; j++) {
-				String viewIdStr = "mega_b_" + i + "_" + j;
-				int viewId = activity.getResources().getIdentifier(viewIdStr,
-						"id", activity.getPackageName());
-				View view = findViewById(viewId);
-				if (view != null) {
-					view.setOnClickListener(layoutClickListener);
-				}
-			}
-		}
-
 		data.setHasUserSelectedData(false);
 
+		this.setContentView(R.layout.mega_ttt);
 		draw();
-
-		this.findViewById(R.id.mega_ttt_root).setOnClickListener(
-				new View.OnClickListener() {
-
-					@Override
-					public void onClick(View view) {
-						System.out.println("CLICKING !!!!");
-						ZoomedView.this.cancel();
-					}
-				});
 	}
 
 	private void draw() {
@@ -69,8 +32,7 @@ public class ZoomedView extends Dialog {
 
 	private void drawAtIndex(int i, int j) {
 		String viewIdStr = "mega_b_" + i + "_" + j;
-		int viewId = activity.getResources().getIdentifier(viewIdStr, "id",
-				activity.getPackageName());
+		int viewId = gameActivity.getResources().getIdentifier(viewIdStr, "id", gameActivity.getPackageName());
 		Button cell = (Button) findViewById(viewId);
 		cell.setTag(R.dimen.row_id, i);
 		cell.setTag(R.dimen.col_id, j);
@@ -79,18 +41,21 @@ public class ZoomedView extends Dialog {
 		if (cell != null && state != null) {
 			cell.setTag(R.dimen.cell_state, state);
 			switch (state) {
-			case EMPTY:
-				break;
+				case EMPTY :
+					cell.setOnClickListener(layoutClickListener);
+					break;
 
-			case CROSS:
-				move = activity.getResources().getDrawable(R.drawable.x_move);
-				cell.setBackgroundDrawable(move);
-				break;
+				case CROSS :
+					move = gameActivity.getResources().getDrawable(R.drawable.x_move);
+					move.setAlpha(ViewUtils.DISABLED_ALPHA);
+					cell.setBackgroundDrawable(move);
+					break;
 
-			case NOUGHTS:
-				move = activity.getResources().getDrawable(R.drawable.o_move);
-				cell.setBackgroundDrawable(move);
-				break;
+				case NOUGHTS :
+					move = gameActivity.getResources().getDrawable(R.drawable.o_move);
+					move.setAlpha(ViewUtils.DISABLED_ALPHA);
+					cell.setBackgroundDrawable(move);
+					break;
 			}
 		}
 	}

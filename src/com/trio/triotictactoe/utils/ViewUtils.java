@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 public class ViewUtils {
 
+	public static final int DISABLED_ALPHA = 255;
+
 	public static void applyAlphaToViewGroup(float initialAlpha, float finalAlpha, int transtionDuration, ViewGroup viewGroup) {
 		AlphaAnimation alpha = new AlphaAnimation(initialAlpha, finalAlpha);
 		alpha.setDuration(transtionDuration);
