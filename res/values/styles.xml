@@ -47,11 +47,22 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="facebook_trio_button">
-        <item name="android:width">150dp</item>
-        <item name="android:height">38dp</item>
-        <item name="android:background">@drawable/com_facebook_button_blue</item>
-        <item name="android:textColor">@color/com_facebook_loginview_text_color</item>
-        <item name="android:textSize">@dimen/com_facebook_loginview_text_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/trio_fb_button</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/com_facebook_loginview_padding_left</item>
+        <item name="android:gravity">center</item>
     </style>
-       
+    <style name="win_loss_game_text">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/win_loss_screen_general_padding</item>
+        </style>
+    
 </resources>

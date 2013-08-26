@@ -28,5 +28,7 @@
     <dimen name="x_height">40dp</dimen>
 	<dimen name="x_top_margin">2dp</dimen> <!-- half of xo_height -->
 	<dimen name="x_font_size">25dp</dimen>
+	
+	<dimen name="win_loss_screen_general_padding">25dp</dimen>
     
 </resources>

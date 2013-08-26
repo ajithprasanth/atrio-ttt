@@ -2,11 +2,10 @@ package com.trio.triotictactoe.activity;
 
 import rules.Result;
 import tictactoe.TTT;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -24,11 +23,13 @@ import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.model.GameDataManager;
 import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
+import com.trio.triotictactoe.utils.TTTConstants;
 import com.trio.triotictactoe.utils.ViewUtils;
 import com.trio.triotictactoe.views.OptionsMenuView;
+import com.trio.triotictactoe.views.WinLossView;
 import com.trio.triotictactoe.views.ZoomedView;
 
-public class GameActivity extends Activity {
+public class GameActivity extends FacebookActivity {
 
 	private SparseArray<MiniTTTData> miniTTTDataMap = new SparseArray<MiniTTTData>();
 	private TTT nextStep = new TTT();
@@ -54,7 +55,8 @@ public class GameActivity extends Activity {
 	}
 
 	public void init() {
-		if (gameDataManager.isPreviousGameDataFound()) {
+		Boolean isGameRestarted = getIntent().getExtras().getBoolean(TTTConstants.IS_GAME_RESTARTED, false);
+		if (!isGameRestarted && gameDataManager.isPreviousGameDataFound()) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage(getResources().getString(R.string.continue_saved_game));
 			builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -209,8 +211,13 @@ public class GameActivity extends Activity {
 
 		if (lastResult.win) {
 			Toast.makeText(this, "You Won !!!", Toast.LENGTH_LONG).show();
+			WinLossView winLossView = new WinLossView(this, true);
+			winLossView.show();
+
 		} else if (lastResult.loose) {
 			Toast.makeText(this, "You Lose !!!", Toast.LENGTH_LONG).show();
+			WinLossView winLossView = new WinLossView(this, false);
+			winLossView.show();
 		}
 	}
 
@@ -312,8 +319,10 @@ public class GameActivity extends Activity {
 	}
 
 	public void restartGame() {
-		gameDataManager.clearSavedGame();
-		gameDataManager.restorePreviousGame();
+		Intent intent = getIntent();
+		intent.putExtra(TTTConstants.IS_GAME_RESTARTED, true);
+		finish();
+		startActivity(intent);
 	}
 
 	public void saveAndExit() {

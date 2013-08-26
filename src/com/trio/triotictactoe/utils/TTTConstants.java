@@ -13,8 +13,9 @@ public class TTTConstants {
 	public static final String FIRST_MOVE = "gamefirstmove";
 
 	// Save game constants
-	public static final String SAVED_GAME_DATA_KEY = "savedGameDatakey";
-	public static final String SAVED_GAME_TIME_KEY = "savedGameTimekey";
+	public static final String IS_GAME_RESTARTED = "isGameRestartedKey";
+	public static final String SAVED_GAME_DATA_KEY = "savedGameDataKey";
+	public static final String SAVED_GAME_TIME_KEY = "savedGameTimeKey";
 	public static final String SERIALIZATION_CELL_DATA_SEPARATOR = ",";
 	public static final String SERIALIZATION_TTT_DATA_SEPARATOR = ";";
 	public static final String INITIAL_GAME_STATE = 

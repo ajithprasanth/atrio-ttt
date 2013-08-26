@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/win_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/ttt_padding"
+        android:src="@drawable/facebook" />
+
+    <Button
+        android:id="@+id/win_loss_fb_share_button"
+        style="@style/facebook_trio_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/win_loss_screen_general_padding"
+        android:text="@string/share_fb" />
+
+    <TextView
+        android:id="@+id/win_loss_retry"
+        style="@style/win_loss_game_text"
+        android:text="@string/retry" />
+
+    <TextView
+        android:id="@+id/win_loss_exit"
+        style="@style/win_loss_game_text"
+        android:text="@string/exit" />
+
+</LinearLayout>

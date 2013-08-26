@@ -8,7 +8,7 @@ import android.view.WindowManager;
 
 import com.trio.triotictactoe.activity.GameActivity;
 
-public class GameActivityDialogView extends Dialog {
+public abstract class GameActivityDialogView extends Dialog {
 
 	protected GameActivity gameActivity;
 

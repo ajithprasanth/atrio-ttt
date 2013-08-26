@@ -57,7 +57,7 @@ public class FacebookActivity extends FragmentActivity {
      * 
      * @param handler
      */
-    protected void getFacebookUsername(Handler handler) {
+	public void getFacebookUsername(Handler handler) {
         requiredUserAction = FB_ACTION_GET_USERNAME;
         responseHandler = handler;
         handleUserAction();
@@ -69,7 +69,7 @@ public class FacebookActivity extends FragmentActivity {
      * 
      * @param handler
      */
-    protected void getFacebookFriends(Handler handler) {
+	public void getFacebookFriends(Handler handler) {
         requiredUserAction = FB_ACTION_FETCH_FRIENDS;
         responseHandler = handler;
         handleUserAction();
@@ -81,7 +81,7 @@ public class FacebookActivity extends FragmentActivity {
      * 
      * @param handler
      */
-    protected void publishNewsFeed(Bundle data, Handler handler) {
+	public void publishNewsFeed(Bundle data, Handler handler) {
         requiredUserAction = FB_ACTION_PUBLISH_FEED;
         publishData = data;
         responseHandler = handler;
