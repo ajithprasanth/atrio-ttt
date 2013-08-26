@@ -15,6 +15,9 @@
     <TextView
         android:id="@+id/menu_item_text"
         android:clickable="false"
+        style="@style/game_text"
+        android:paddingLeft="@dimen/ttt_padding"
+        android:paddingTop="@dimen/ttt_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical" />
