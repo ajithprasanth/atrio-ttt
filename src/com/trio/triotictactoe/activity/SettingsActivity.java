@@ -1,8 +1,11 @@
 package com.trio.triotictactoe.activity;
 
 
+import com.google.inject.Inject;
 import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.guice.ApplicationModule;
 import com.trio.triotictactoe.preferences.UserPreferences;
+import com.trio.triotictactoe.utils.SoundUtils;
 import com.trio.triotictactoe.utils.TTTConstants;
 
 import android.app.Activity;
@@ -15,12 +18,14 @@ public class SettingsActivity extends Activity {
 
 	
 	View vibratorView, soundView, gamesettingsView, firstmoveView;
-	
+	@Inject
+	public SoundUtils soundUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings_activity);
+		ApplicationModule.Inject(this);
 	}
 	
 	@Override
@@ -49,7 +54,9 @@ public class SettingsActivity extends Activity {
 			save();
 		}
 	}
-	
+	public void click(View v){
+		soundUtils.click();
+	}
 	@Override
 	public void finish() {
 		save();

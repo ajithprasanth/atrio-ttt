@@ -6,7 +6,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.inject.Inject;
 import com.trio.triotictactoe.R;
+import com.trio.triotictactoe.guice.ApplicationModule;
+import com.trio.triotictactoe.utils.SoundUtils;
 import com.trio.triotictactoe.utils.TTTConstants;
 
 public class HomeActivity extends Activity {
@@ -15,10 +18,14 @@ public class HomeActivity extends Activity {
 	
 	MediaPlayer player;
 	
+	@Inject
+	private SoundUtils soundUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		ApplicationModule.Inject(this);
+		player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
 		//player = MediaPlayer.create(this.getApplicationContext(), R.raw.home);
 		findViewById(R.id.playervscomputer).setOnClickListener(layoutClickListener);
 		findViewById(R.id.playervsplayer).setOnClickListener(layoutClickListener);
@@ -31,16 +38,17 @@ public class HomeActivity extends Activity {
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-//		if(hasFocus){
-//			player.start();
+		if(hasFocus){
+			player.start();
 //			((AnimationDrawable)findViewById(R.id.textview).getBackground()).start();
-//		}else{
-//			player.pause();
+		}else{
+			player.pause();
 //			((AnimationDrawable)findViewById(R.id.textview).getBackground()).stop();
-//		}
+		}
 	}
 	
 	public void finish(View v){
+		soundUtils.click();
 		this.finish();
 	}
 	
@@ -60,6 +68,9 @@ public class HomeActivity extends Activity {
 		startActivity(settingsAcivityIntent);
 	}
 	
+	
+	
+	
 	/**
 	 * Click listener for individual TTT (Linear Layout)
 	 */
@@ -67,10 +78,14 @@ public class HomeActivity extends Activity {
 		@Override
 		public void onClick(final View clickedLinearLayout) {
 			if(clickedLinearLayout.getId() == R.id.playervsplayer){
+				soundUtils.click();
 				playerVsPlayer(clickedLinearLayout);
+				
 			}else if (clickedLinearLayout.getId() == R.id.playervscomputer){
+				soundUtils.click();
 				playerVsComputer(clickedLinearLayout);
 			}else if(clickedLinearLayout.getId() == R.id.settings){
+				soundUtils.click();
 				settingsActivity(clickedLinearLayout);
 			}
 				
