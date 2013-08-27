@@ -1,10 +1,8 @@
 package com.trio.triotictactoe.views;
 
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 
 import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.activity.GameActivity;
@@ -22,12 +20,7 @@ public class WinLossView extends GameActivityDialogView {
 
 	private void initLayout() {
 		if (!hasUserWon) {
-			ImageView imageView = (ImageView) findViewById(R.id.win_image);
-			Matrix matrix = new Matrix();
-			imageView.setScaleType(ScaleType.MATRIX); // required
-			matrix.postRotate((float) 180f, imageView.getDrawable().getBounds().width() / 2, imageView.getDrawable().getBounds().height() / 2);
-			imageView.setImageMatrix(matrix);
-
+			((ImageView) findViewById(R.id.win_image)).setImageDrawable(gameActivity.getResources().getDrawable(R.drawable.lost));
 			findViewById(R.id.win_loss_fb_share_button).setVisibility(View.GONE);
 
 		} else {

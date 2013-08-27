@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="@dimen/ttt_padding"
-        android:src="@drawable/facebook" />
+        android:src="@drawable/win" />
 
     <Button
         android:id="@+id/win_loss_fb_share_button"
