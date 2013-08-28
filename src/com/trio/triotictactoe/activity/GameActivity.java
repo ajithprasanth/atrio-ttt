@@ -257,37 +257,6 @@ public class GameActivity extends FacebookActivity {
 		timerHandler.postDelayed(timer, 0);
 	}
 
-	/**
-	 * Catch user back press to avoid unintentional back press & show warning
-	 */
-	@Override
-	public void onBackPressed() {
-		if (hasUserMadeAtleastOneMove) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(getResources().getString(R.string.save_current_game));
-			builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface arg0, int arg1) {
-					gameDataManager.storeThisGame();
-					GameActivity.this.finish();
-				}
-			});
-			builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface arg0, int arg1) {
-					gameDataManager.clearSavedGame();
-					GameActivity.this.finish();
-				}
-			});
-			builder.setNeutralButton(getResources().getString(R.string.cancel), null);
-
-			builder.create().show();
-		} else {
-			super.onBackPressed();
-			this.finish();
-		}
-	}
-
 	public SparseArray<MiniTTTData> getMiniTTTDataMap() {
 		return miniTTTDataMap;
 	}
@@ -309,7 +278,30 @@ public class GameActivity extends FacebookActivity {
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			finish();
+			if (hasUserMadeAtleastOneMove) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage(getResources().getString(R.string.save_current_game));
+				builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						gameDataManager.storeThisGame();
+						GameActivity.this.finish();
+					}
+				});
+				builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						gameDataManager.clearSavedGame();
+						GameActivity.this.finish();
+					}
+				});
+				builder.setNeutralButton(getResources().getString(R.string.cancel), null);
+
+				builder.create().show();
+			} else {
+				super.onBackPressed();
+				this.finish();
+			}
 
 		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
 			OptionsMenuView optionsMenu = new OptionsMenuView(this);
