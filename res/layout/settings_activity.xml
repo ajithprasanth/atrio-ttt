@@ -199,7 +199,6 @@
             android:gravity="center_vertical"
             android:shadowColor="@android:color/white"
             android:shadowDx="3"
-            android:onClick="click"
             android:shadowDy="3"
             android:shadowRadius=".5"
 			android:layout_alignParentRight="true"           

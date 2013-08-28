@@ -46,12 +46,14 @@ public class ZoomedView extends GameActivityDialogView {
 					break;
 
 				case CROSS :
+				case CROSS_LAST_SELECTED :
 					move = gameActivity.getResources().getDrawable(R.drawable.x_move);
 					move.setAlpha(ViewUtils.DISABLED_ALPHA);
 					cell.setBackgroundDrawable(move);
 					break;
 
 				case NOUGHTS :
+				case NOUGHTS_LAST_SELECTED :
 					move = gameActivity.getResources().getDrawable(R.drawable.o_move);
 					move.setAlpha(ViewUtils.DISABLED_ALPHA);
 					cell.setBackgroundDrawable(move);

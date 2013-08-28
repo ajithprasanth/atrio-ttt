@@ -1,16 +1,15 @@
 package com.trio.triotictactoe.model;
 
-import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import com.trio.triotictactoe.R;
 import com.trio.triotictactoe.activity.GameActivity;
 import com.trio.triotictactoe.preferences.UserPreferences;
 import com.trio.triotictactoe.utils.CellState;
 import com.trio.triotictactoe.utils.TTTConstants;
+import com.trio.triotictactoe.views.GameButton;
 
 /**
  * Static methods to save & restore game data
@@ -73,31 +72,8 @@ public class GameDataManager {
 					for (int y = 0; y <= 2; y++) {
 						String cellIdStr = "b_" + x + "_" + y;
 						int cellId = activity.getResources().getIdentifier(cellIdStr, "id", activity.getPackageName());
-						Button cell = (Button) view.findViewById(cellId);
-
-						CellState userState = oneTTTData.getCell(x, y);
-
-						switch (userState) {
-							case EMPTY :
-								Drawable emptyCell = activity.getResources().getDrawable(R.drawable.cell_1);
-								cell.setBackgroundDrawable(emptyCell);
-								cell.setTag(R.dimen.cell_state, CellState.EMPTY);
-								break;
-
-							case CROSS :
-								Drawable xMove = activity.getResources().getDrawable(R.drawable.x_move);
-								cell.setBackgroundDrawable(xMove);
-								cell.setTag(R.dimen.cell_state, CellState.CROSS);
-								break;
-
-							case NOUGHTS :
-								Drawable oMove = activity.getResources().getDrawable(R.drawable.o_move);
-								cell.setBackgroundDrawable(oMove);
-								cell.setTag(R.dimen.cell_state, CellState.NOUGHTS);
-								break;
-						}
-
-						cell.invalidate();
+						GameButton cell = (GameButton) view.findViewById(cellId);
+						cell.setCellState(oneTTTData.getCell(x, y));
 					}
 				}
 			}
@@ -146,10 +122,10 @@ public class GameDataManager {
 			for (int j = 0; j <= 2; j++) {
 				String viewIdStr = "b_" + i + "_" + j;
 				int viewId = activity.getResources().getIdentifier(viewIdStr, "id", activity.getPackageName());
-				Button cell = (Button) clickedLayout.findViewById(viewId);
+				GameButton cell = (GameButton) clickedLayout.findViewById(viewId);
 
 				if (cell != null) {
-					CellState state = (CellState) cell.getTag(R.dimen.cell_state);
+					CellState state = (CellState) cell.getCellState();
 					if (state != null)
 						switch (state) {
 							case EMPTY :
@@ -157,10 +133,12 @@ public class GameDataManager {
 								break;
 
 							case CROSS :
+							case CROSS_LAST_SELECTED :
 								oneTTTdata.populateData(i, j, CellState.CROSS);
 								break;
 
 							case NOUGHTS :
+							case NOUGHTS_LAST_SELECTED :
 								oneTTTdata.populateData(i, j, CellState.NOUGHTS);
 								break;
 						}

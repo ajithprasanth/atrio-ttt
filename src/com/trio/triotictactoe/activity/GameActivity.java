@@ -7,14 +7,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +23,7 @@ import com.trio.triotictactoe.model.MiniTTTData;
 import com.trio.triotictactoe.utils.CellState;
 import com.trio.triotictactoe.utils.TTTConstants;
 import com.trio.triotictactoe.utils.ViewUtils;
+import com.trio.triotictactoe.views.GameButton;
 import com.trio.triotictactoe.views.OptionsMenuView;
 import com.trio.triotictactoe.views.WinLossView;
 import com.trio.triotictactoe.views.ZoomedView;
@@ -37,6 +36,8 @@ public class GameActivity extends FacebookActivity {
 	private View gameView;
 	private GameDataManager gameDataManager;
 	private boolean hasUserMadeAtleastOneMove;
+
+	private GameButton lastSelectedCell;
 
 	private long startTime = System.currentTimeMillis();
 
@@ -129,6 +130,32 @@ public class GameActivity extends FacebookActivity {
 	}
 
 	/**
+	 * Remove animation from last selected cell
+	 */
+	private void resetLastSelectedCell() {
+		if (lastSelectedCell != null) {
+			CellState cellState = lastSelectedCell.getCellState();
+
+			if (cellState != null) {
+				switch (cellState) {
+					case CROSS :
+					case CROSS_LAST_SELECTED :
+						lastSelectedCell.setCellState(CellState.CROSS);
+						break;
+
+					case NOUGHTS :
+					case NOUGHTS_LAST_SELECTED :
+						lastSelectedCell.setCellState(CellState.NOUGHTS);
+						break;
+
+					default :
+						break;
+				}
+			}
+		}
+	}
+
+	/**
 	 * Based on zoom view click position, populate the corresponding cell in the full view 
 	 * @param viewToRepaint
 	 */
@@ -136,14 +163,14 @@ public class GameActivity extends FacebookActivity {
 		MiniTTTData oneTTTdata = miniTTTDataMap.get(viewToRepaint.getId());
 		String viewIdStr = "b_" + oneTTTdata.getUserClickedRowIndex() + "_" + oneTTTdata.getUserClickedColumnIndex();
 		int viewId = getResources().getIdentifier(viewIdStr, "id", getPackageName());
-		Button cell = (Button) viewToRepaint.findViewById(viewId);
+		GameButton cell = (GameButton) viewToRepaint.findViewById(viewId);
 
 		System.out.println("Cell: " + cell);
 
 		if (cell != null) {
-			Drawable xMove = getResources().getDrawable(R.drawable.x_move);
-			cell.setBackgroundDrawable(xMove);
-			cell.setTag(R.dimen.cell_state,CellState.CROSS);
+			resetLastSelectedCell();
+			cell.setCellState(CellState.CROSS_LAST_SELECTED);
+			lastSelectedCell = cell;
 		}
 	}
 
@@ -198,12 +225,12 @@ public class GameActivity extends FacebookActivity {
 		llRow = lastResult.i % 3;
 		llCol = lastResult.j % 3;
 		viewIdStr = "b_" + llRow + "_" + llCol;
-		Button cell = (Button) layout.findViewById(getResources().getIdentifier(viewIdStr, "id", getPackageName()));
+		GameButton cell = (GameButton) layout.findViewById(getResources().getIdentifier(viewIdStr, "id", getPackageName()));
 
 		if (cell != null) {
-			Drawable oMove = getResources().getDrawable(R.drawable.o_move);
-			cell.setBackgroundDrawable(oMove);
-			cell.setTag(R.dimen.cell_state, CellState.NOUGHTS);
+			resetLastSelectedCell();
+			cell.setCellState(CellState.NOUGHTS_LAST_SELECTED);
+			lastSelectedCell = cell;
 		}
 
 		// Keep the miniTTTDataMap in sync with the system selection
